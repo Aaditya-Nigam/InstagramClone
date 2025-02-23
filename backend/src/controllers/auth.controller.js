@@ -61,7 +61,7 @@ const authLogin=async (req,res)=>{
         }
         const user=await User.findOne({email})
         if(!user){
-            res.status(500).json({message: "Invalid credentials!"});
+            res.status(500).json({message: "Invalid credentials!!"});
             return ;
         }
         const checkPassword=await bcrypt.compare(password,user.password);
@@ -84,7 +84,7 @@ const authLogin=async (req,res)=>{
         })
     } catch (error) {
         console.log("error in login controller: ",error.message)
-        res.status(500).json({message: "Internal server error!"});
+        res.status(500).json({message: error.message});
     }
 }
 
@@ -104,7 +104,7 @@ const authCheck=async (req,res)=>{
     try {
         res.status(201).json(req.user)
     } catch ({error}) {
-        res.status(404).json("Internal server error")
+        res.status(404).json({message: "Internal server error"})
         console.log("error in check controller: ",error.message);
     }
 }

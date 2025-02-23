@@ -5,7 +5,7 @@ const protectRoute=async (req,res,next)=>{
     try {
         const token=req.cookies.jwt;
         if(!token){
-            res.status(404).json({messag: "Token missing-User unauthenticated!"})
+            res.status(400).json({message: "Token missing-User unauthenticated!"})
             return ;
         }
         const verify=await jwt.verify(token,process.env.JWT);
