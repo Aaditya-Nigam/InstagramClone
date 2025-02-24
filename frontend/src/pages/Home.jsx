@@ -1,3 +1,9 @@
+import { HomeFeed } from "../components/UI/HomeFeed"
+
 export const Home=()=>{
-    return <h1>Home</h1>
+    return (
+        <>
+            <HomeFeed/>
+        </>
+    )
 }
